@@ -36,3 +36,9 @@ Antes de ejecutar la aplicación, asegúrate de que tu base de datos está confi
     No se manejan relaciones complejas: Este proyecto no maneja relaciones entre entidades complejas. Se limita a la gestión de una sola entidad (Empleado).
     Sin interfaz gráfica: La aplicación se prueba a través de la consola, sin interfaz de usuario. Sin embargo, es fácilmente ampliable para agregar una UI en el futuro.
     No validación avanzada de entrada: La validación de datos (como chequear si el salario es un valor positivo) no está implementada, pero podría añadirse según sea necesario(me quede sin tiempo).
+
+
+
+
+###importante##
+los archivos estan sobre master
