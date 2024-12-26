@@ -27,7 +27,7 @@ public class PruebaTecnicaFinal {
             System.out.println("1) Alta");
             System.out.println("2) Baja");
             System.out.println("3) Consulta");
-            System.out.println("4) Modificación");
+            System.out.println("4) Modificacion");
             System.out.println("5) Salir");
             System.out.print("Elige una opción: ");
             opcion = scanner.nextInt();
@@ -93,10 +93,10 @@ public class PruebaTecnicaFinal {
                     }
                     break;
                 case 5://pues salir 
-                    System.out.println("Saliendo de la aplicación...");
+                    System.out.println("Saliendo de la aplicacion...");
                     break;
                 default:
-                    System.out.println("Opción no válida.");
+                    System.out.println("Opcion no valida.");
             }
         } while (opcion != 5);
 
