@@ -18,6 +18,7 @@ Antes de ejecutar la aplicación, asegúrate de que tu base de datos está confi
 
     Crear una base de datos llamada pruebatecnicafinal (asi lo configure en persistence.xml).
     Configurar el acceso en el archivo persistence.xml que se encuentra en el directorio META-INF de tu proyecto.
+    la tabla si se llama empleado
 
   ## Una vez que la aplicación esté en funcionamiento, puedes interactuar con ella utilizando las siguientes funcionalidades:
 
