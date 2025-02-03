@@ -38,7 +38,6 @@ public class ControladoraPersistencia {
         }
     }
     
-    //Borrar empleado (D)
     public void borrarEmpleado(int id) {
         try {
             empleadoJpa.destroy(id);

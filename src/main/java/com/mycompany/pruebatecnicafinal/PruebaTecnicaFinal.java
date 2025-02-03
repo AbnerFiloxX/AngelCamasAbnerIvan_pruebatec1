@@ -16,7 +16,6 @@ public class PruebaTecnicaFinal {
     public static void main(String[] args) {
         // es lo que crea el controlador de empleados
         ControladoraPersistencia controlador = new ControladoraPersistencia();
-        //EmpleadoJpaController controlador = new EmpleadoJpaController();
         Scanner scanner = new Scanner(System.in);
         int opcion;
         

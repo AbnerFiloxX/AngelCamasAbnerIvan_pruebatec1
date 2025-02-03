@@ -26,7 +26,6 @@ public class Empleado implements Serializable {
     private String apellido;
     private String cargo;
     private double salario;
-    //private Date fechaInicio;
 
     //constructor
     public Empleado(String nombre, String apellido, String cargo, double salario) {
@@ -34,7 +33,6 @@ public class Empleado implements Serializable {
         this.apellido = apellido;
         this.cargo = cargo;
         this.salario = salario;
-        //this.fechaInicio = fechaInicio;
     }
 
     public Empleado() {
@@ -87,13 +85,4 @@ public String toString() {
     return "Empleado{id=" + id + ", nombre='" + nombre + "', apellido='" + apellido + "', cargo='" + cargo + "', salario=" + salario + "}";
 }
 
-
-    /*public Date getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }*/
-    
 }
