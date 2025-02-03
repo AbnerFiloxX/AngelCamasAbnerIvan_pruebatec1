@@ -13,6 +13,8 @@ import javax.persistence.Persistence;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
 import java.util.List;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 public class EmpleadoJpaController implements Serializable {
 
@@ -55,20 +57,23 @@ public class EmpleadoJpaController implements Serializable {
     }
 
     public void destroy(int id) throws EntityNotFoundException {
-        EntityManager em = getEntityManager();
+        EntityManager em = null;
         try {
+            em = getEntityManager();
             em.getTransaction().begin();
             Empleado empleado;
             try {
                 empleado = em.getReference(Empleado.class, id);
-                empleado.getId();  // Verifica si existe el empleado,ignoren mis comentarios por ahora
+                empleado.getId();  // Verifica si existe el empleado
             } catch (EntityNotFoundException enfe) {
                 throw new EntityNotFoundException("El empleado con ID " + id + " no se encuentra.");
             }
             em.remove(empleado);
             em.getTransaction().commit();
         } finally {
-            em.close();
+            if (em != null) {
+                em.close();
+            }
         }
     }
 
@@ -103,13 +108,17 @@ public class EmpleadoJpaController implements Serializable {
         }
     }
 
-    public int getEmpleadoCount() {
+public int getEmpleadoCount() {
         EntityManager em = getEntityManager();
         try {
-            Query query = em.createQuery("SELECT COUNT(e) FROM Empleado e");
-            return ((Long) query.getSingleResult()).intValue();
+            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            Root<Empleado> rt = cq.from(Empleado.class);
+            cq.select(em.getCriteriaBuilder().count(rt));
+            Query q = em.createQuery(cq);
+            return ((Long) q.getSingleResult()).intValue();
         } finally {
             em.close();
         }
     }
+    
 }

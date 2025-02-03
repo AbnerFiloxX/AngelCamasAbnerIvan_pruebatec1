@@ -7,6 +7,7 @@ package persistencia;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityNotFoundException;
 import logica.Empleado;
 import persistencia.exceptions.NonexistentEntityException;
 
@@ -39,10 +40,15 @@ public class ControladoraPersistencia {
     }
     
     public void borrarEmpleado(int id) {
-        try {
-            empleadoJpa.destroy(id);
-        } catch (NonexistentEntityException ex) {
-            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       try {
+        empleadoJpa.destroy(id);
+        System.out.println("Empleado eliminado correctamente.");
+    } catch (EntityNotFoundException ex) {
+        Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        System.out.println("Empleado no encontrado.");
+    } catch (Exception ex) {
+        Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        System.out.println("Error al eliminar el empleado.");
+    }
     }
 }
