@@ -4,18 +4,19 @@ package com.mycompany.pruebatecnicafinal;
 
 
 import logica.Empleado;
-import persistencia.EmpleadoJpaController;
 
 import java.util.Scanner;
 
 import java.util.List;
+import persistencia.ControladoraPersistencia;
 
 
 public class PruebaTecnicaFinal {
 
     public static void main(String[] args) {
         // es lo que crea el controlador de empleados
-        EmpleadoJpaController controlador = new EmpleadoJpaController();
+        ControladoraPersistencia controlador = new ControladoraPersistencia();
+        //EmpleadoJpaController controlador = new EmpleadoJpaController();
         Scanner scanner = new Scanner(System.in);
         int opcion;
         
@@ -46,7 +47,7 @@ public class PruebaTecnicaFinal {
                     
                     Empleado nuevoEmpleado = new Empleado(nombre, apellido, cargo, salario);
                     try {
-                        controlador.create(nuevoEmpleado);  // Llamada que puede lanzar Exception
+                        controlador.crearEmpleado(nuevoEmpleado);  // Llamada que puede lanzar Exception
                         System.out.println("Empleado agregado correctamente.");
                     } catch (Exception e) {
                         System.out.println("Error al agregar el empleado: " + e.getMessage());
@@ -56,14 +57,14 @@ public class PruebaTecnicaFinal {
                     System.out.print("ID del empleado a eliminar: ");
                     int idEliminar = scanner.nextInt();
                     try {
-                        controlador.destroy(idEliminar);  // Llamada que puede lanzar Exception
+                        controlador.borrarEmpleado(idEliminar);  // Llamada que puede lanzar Exception
                         System.out.println("Empleado eliminado correctamente.");
                     } catch (Exception e) {
                         System.out.println("Error al eliminar el empleado: " + e.getMessage());
                     }
                     break;
                 case 3:// Consulta de empleados
-                    List<Empleado> empleados = controlador.findEmpleadoEntities();
+                    List<Empleado> empleados = controlador.traerEmpleados();
                     for (Empleado emp : empleados) {
                         System.out.println(emp.toString());  // Imprimir información de cada empleado
                     }
@@ -72,7 +73,7 @@ public class PruebaTecnicaFinal {
                     System.out.print("ID del empleado a modificar: ");
                     int idModificar = scanner.nextInt();
                     try {
-                        Empleado empleadoModificar = controlador.findEmpleado(idModificar);
+                        Empleado empleadoModificar = controlador.traerEmpleado(idModificar);
                         if (empleadoModificar != null) {
                             System.out.print("Nuevo nombre: ");
                             empleadoModificar.setNombre(scanner.next());
@@ -83,7 +84,7 @@ public class PruebaTecnicaFinal {
                             System.out.print("Nuevo salario: ");
                             empleadoModificar.setSalario(scanner.nextDouble());
                             
-                            controlador.edit(empleadoModificar);  // Llamada que puede lanzar Exception
+                            controlador.modificarEmpleado(empleadoModificar);  // Llamada que puede lanzar Exception
                             System.out.println("Empleado modificado correctamente.");
                         } else {
                             System.out.println("Empleado no encontrado.");

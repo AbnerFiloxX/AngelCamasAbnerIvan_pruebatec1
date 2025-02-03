@@ -16,10 +16,14 @@ import java.util.List;
 
 public class EmpleadoJpaController implements Serializable {
 
-    private EntityManagerFactory emf;
+    private EntityManagerFactory emf=null;
 
     public EmpleadoJpaController() {
         emf = Persistence.createEntityManagerFactory("pruebatecnicafinalPU");
+    }
+    
+    public EmpleadoJpaController(EntityManagerFactory emf) {
+        this.emf = emf;
     }
 
     private EntityManager getEntityManager() {
