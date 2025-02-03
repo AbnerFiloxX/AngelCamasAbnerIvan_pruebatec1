@@ -40,5 +40,5 @@ Antes de ejecutar la aplicación, asegúrate de que tu base de datos está confi
 
 
 
-###importante
+### Importante
 los archivos estan sobre master
